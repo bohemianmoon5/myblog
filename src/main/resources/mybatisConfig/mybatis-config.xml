@@ -7,12 +7,12 @@
   	<setting name="mapUnderscoreToCamelCase" value="true"/>
     <setting name="jdbcTypeForNull" value="NULL" />
   </settings>
-  <!-- <typeAliases>
-    <typeAlias type="com.day.dto.RepBoard" alias="repboard"/>
-    <typeAlias type="com.day.dto.Customer" alias="customer"/>
+  <typeAliases>
+    <!-- <typeAlias type="com.day.dto.RepBoard" alias="repboard"/> -->
+    <typeAlias type="com.day.myblog.dto.User" alias="user"/>
   </typeAliases>
   <mappers>
-  	<mapper resource="mybatisConfig/RepBoardMapper.xml"/>
-  	<mapper resource="mybatisConfig/CustomerMapper.xml"/>
-  </mappers> -->
+  	<!-- <mapper resource="mybatisConfig/RepBoardMapper.xml"/> -->
+  	<mapper resource="mybatisConfig/UserMapper.xml"/>
+  </mappers>
 </configuration>
