@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.day.myblog.dto.BoardMapper">
+<!-- <insert id="insert" parameterType="hashmap"> -->
+<insert id="insert" parameterType="board">
+INSERT INTO myblogboard(id, title, content, count, userid, createdate)
+VALUES (myblogboard_seq.NEXTVAL, #{title}, #{content}, 0, #{userid}, SYSDATE)
+</insert>
+<select id="selectAll" resultType="board">
+SELECT * FROM myblogboard ORDER BY id ASC
+</select>
+<select id="countPage" resultType="int">
+SELECT COUNT(*) FROM myblogboard 
+</select>
+<select id="selectById" parameterType="int" resultType="board">
+SELECT * FROM myblogboard WHERE id=#{id}
+</select>
+<select id="selectPage" parameterType="java.util.HashMap" resultType="board">
+SELECT * 
+FROM (
+    SELECT rownum rn, a.* 
+    FROM (
+     SELECT *
+     FROM myblogboard  
+     ORDER BY id DESC ) a
+)
+WHERE rn BETWEEN START_ROW(#{currentPage}, #{cnt_per_page}) AND  
+                 END_ROW(#{currentPage},   #{cnt_per_page})
+</select>
+<delete id="delete" parameterType="int">
+DELETE FROM myblogboard WHERE id=#{id}
+</delete>
+<update id="update" parameterType="board">
+UPDATE myblogboard
+<set>
+  <if test="title !=null and title != ''">title=#{title},</if>
+  <if test="content !=null and content != ''">content=#{content},</if>
+</set> 
+WHERE id=#{id}
+</update>
+</mapper>
+
+<!-- <select id="selectById" parameterType="int" resultType="user">
+SELECT * FROM mybloguser WHERE id=#{id}
+</select>
+<select id="selectByName" parameterType="String" resultType="user">
+SELECT * FROM mybloguser WHERE username=#{username}
+</select>
+<delete id="delete" parameterType="int">
+DELETE FROM mybloguser WHERE id=#{id}
+</delete> -->

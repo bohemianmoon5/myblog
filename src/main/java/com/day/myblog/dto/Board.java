@@ -3,26 +3,29 @@ package com.day.myblog.dto;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Board {
 	private int id;
 	private String title;
 	private String content;
 	private int count;
-	private User user;
+	private int userid;
 	private List<Reply> reply;
+	//@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
 	private Timestamp createDate;
 	
 	public Board() {
 		super();
 	}
 	
-	public Board(int id, String title, String content, int count, User user, List<Reply> reply, Timestamp createDate) {
+	public Board(int id, String title, String content, int count, int userid, List<Reply> reply, Timestamp createDate) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.count = count;
-		this.user = user;
+		this.userid = userid;
 		this.reply = reply;
 		this.createDate = createDate;
 	}
@@ -51,11 +54,11 @@ public class Board {
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public User getUser() {
-		return user;
+	public int getUserid() {
+		return userid;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 	public List<Reply> getReply() {
 		return reply;
@@ -72,8 +75,8 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", count=" + count + ", user=" + user
-				+ ", reply=" + reply + ", createDate=" + createDate + "]";
+		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", count=" + count + ", userid="
+				+ userid + ", reply=" + reply + ", createDate=" + createDate + "]";
 	}
 
 }

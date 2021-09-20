@@ -6,6 +6,38 @@
 <!-- <insert id="insert" parameterType="hashmap"> -->
 <insert id="insert" parameterType="user">
 INSERT INTO mybloguser(id, username, password, email, role, createdate)
-VALUES (myblog_seq.NEXTVAL, #{username}, #{password}, #{email}, 'user', SYSDATE)
+VALUES (myblog_seq.NEXTVAL, #{username}, #{password}, #{email}, 'USER', SYSDATE)
 </insert>
+<select id="selectById" parameterType="int" resultType="user">
+SELECT * FROM mybloguser WHERE id=#{id}
+</select>
+<select id="selectByName" parameterType="String" resultType="user">
+SELECT * FROM mybloguser WHERE username=#{username}
+</select>
+<select id="selectAll" resultType="user">
+SELECT * FROM mybloguser ORDER BY id ASC
+</select>
+<select id="selectPage" parameterType="java.util.HashMap" resultType="user">
+SELECT * 
+FROM (
+    SELECT rownum rn, a.* 
+    FROM (
+     SELECT *
+     FROM mybloguser  
+     ORDER BY id DESC ) a
+)
+WHERE rn BETWEEN START_ROW(#{currentPage}, #{cnt_per_page}) AND  
+                 END_ROW(#{currentPage},   #{cnt_per_page})
+</select>
+<update id="update" parameterType="user">
+UPDATE mybloguser
+<set>
+  <if test="password !=null and password != ''">password=#{password},</if>
+  <if test="email !=null and email != ''">email=#{email},</if>
+</set> 
+WHERE id=#{id}
+</update>
+<delete id="delete" parameterType="int">
+DELETE FROM mybloguser WHERE id=#{id}
+</delete>
 </mapper>

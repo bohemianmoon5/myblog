@@ -8,7 +8,7 @@ public class BoardBuilder {
 	private String title;
 	private String content;
 	private int count;
-	private User user;
+	private int userid;
 	private List<Reply> reply;
 	private Timestamp createDate;
 	
@@ -28,8 +28,8 @@ public class BoardBuilder {
 		this.count = count;
 		return this;
 	}
-	public BoardBuilder setUser(User user) {
-		this.user = user;
+	public BoardBuilder setUser(int userid) {
+		this.userid = userid;
 		return this;
 	}
 	public BoardBuilder setReply(List<Reply> reply) {
@@ -41,7 +41,7 @@ public class BoardBuilder {
 		return this;
 	}
 	public Board build() {
-		return new Board(id, title, content, count, user, reply, createDate);
+		return new Board(id, title, content, count, userid, reply, createDate);
 	}
 	
 }
