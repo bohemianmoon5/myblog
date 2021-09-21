@@ -46,10 +46,12 @@
 	<input type="hidden" id="id" value="${principal.user.id}" />
 	<c:choose>
 		<c:when test="${principal.user.oauth == null}">
+			<br>
 			<button id="btn-update" class="btn btn-primary">수정하기</button>
 			<button id="btn-back" class="btn btn-secondary" onclick="history.back()">돌아가기</button>			
 		</c:when>
 		<c:otherwise>
+			<br>
 			<button id="btn-back" class="btn btn-primary" onclick="history.back()">돌아가기</button>
 		</c:otherwise>
 	</c:choose>
