@@ -5,58 +5,77 @@ import java.sql.Timestamp;
 public class Reply {
 	private int id;
 	private String content;
-	private Board board;
-	private User user;
+	private int boardid;
+	private int userid;
+	private String username;
 	private Timestamp createDate;
 	
 	public Reply() {
 		super();
 	}
 
-	public Reply(int id, String content, Board board, User user, Timestamp createDate) {
+	public Reply(int id, String content, int boardid, int userid, String username, Timestamp createDate) {
 		super();
 		this.id = id;
 		this.content = content;
-		this.board = board;
-		this.user = user;
+		this.boardid = boardid;
+		this.userid = userid;
+		this.username = username;
 		this.createDate = createDate;
 	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Board getBoard() {
-		return board;
+
+	public int getBoardid() {
+		return boardid;
 	}
-	public void setBoard(Board board) {
-		this.board = board;
+
+	public void setBoardid(int boardid) {
+		this.boardid = boardid;
 	}
-	public User getUser() {
-		return user;
+
+	public int getUserid() {
+		return userid;
 	}
-	public void setUser(User user) {
-		this.user = user;
+
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public Timestamp getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Reply [id=" + id + ", content=" + content + ", board=" + board + ", user=" + user + ", createDate="
-				+ createDate + "]";
+		return "Reply [id=" + id + ", content=" + content + ", boardid=" + boardid + ", userid=" + userid
+				+ ", username=" + username + ", createDate=" + createDate + "]";
 	}
-	
+
 }

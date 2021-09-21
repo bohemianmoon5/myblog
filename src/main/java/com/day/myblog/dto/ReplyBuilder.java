@@ -5,8 +5,9 @@ import java.sql.Timestamp;
 public class ReplyBuilder {
 	private int id;
 	private String content;
-	private Board board;
-	private User user;
+	private int boardid;
+	private int userid;
+	private String username;
 	private Timestamp createDate;
 	
 	public ReplyBuilder setId(int id) {
@@ -17,12 +18,16 @@ public class ReplyBuilder {
 		this.content = content;
 		return this;
 	}
-	public ReplyBuilder setBoard(Board board) {
-		this.board = board;
+	public ReplyBuilder setBoard(int boardid) {
+		this.boardid = boardid;
 		return this;
 	}
-	public ReplyBuilder setUser(User user) {
-		this.user = user;
+	public ReplyBuilder setUser(int userid) {
+		this.userid = userid;
+		return this;
+	}
+	public ReplyBuilder setUsername(String username) {
+		this.username = username;
 		return this;
 	}
 	public ReplyBuilder setCreateDate(Timestamp createDate) {
@@ -30,7 +35,7 @@ public class ReplyBuilder {
 		return this;
 	}
 	public Reply build() {
-		return new Reply(id, content, board, user, createDate);
+		return new Reply(id, content, boardid, userid, username, createDate);
 	}
 	
 }

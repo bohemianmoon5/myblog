@@ -9,8 +9,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.day.myblog.dao.BoardDAO;
+import com.day.myblog.dao.ReplyDAO;
 import com.day.myblog.dao.UserDAO;
 import com.day.myblog.dto.Board;
+import com.day.myblog.dto.Reply;
 import com.day.myblog.dto.User;
 import com.day.myblog.exception.AddException;
 import com.day.myblog.exception.FindException;
@@ -23,6 +25,9 @@ public class BoardService {
 	
 	@Autowired
 	private BoardDAO boardDAO;
+	
+	@Autowired
+	private ReplyDAO replyDAO;
 
 	public int write(Board board, User user) throws AddException {
 		board.setUserid(user.getId());
@@ -32,7 +37,22 @@ public class BoardService {
 		}else {
 			return -1;
 		}
-		
+	}
+	
+	public int replyWrite(User user, int boardId, Reply requestReply) throws FindException, AddException {
+		Board board = boardDAO.selectById(boardId);
+		requestReply.setUserid(user.getId());
+		requestReply.setBoardid(board.getId());
+		String check = replyDAO.insert(requestReply);
+		if(check != null) {
+			return 1;
+		}else {
+			return -1;
+		}
+	}
+	
+	public List<Reply> selectAll(int boardId) throws FindException {
+		return replyDAO.selectAll(boardId);
 	}
 	
 	public List<Board> list(PagingVO vo) throws FindException {
@@ -49,6 +69,15 @@ public class BoardService {
 	
 	public int delete(int id) throws RemoveException {
 		String check = boardDAO.deleteById(id);
+		if(check != null) {
+			return 1;
+		}else {
+			return -1;
+		}
+	}
+	
+	public int deleteRely(int id) throws RemoveException {
+		String check = replyDAO.deleteById(id);
 		if(check != null) {
 			return 1;
 		}else {

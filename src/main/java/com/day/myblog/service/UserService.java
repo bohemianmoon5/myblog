@@ -1,5 +1,7 @@
 package com.day.myblog.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,9 +42,11 @@ public class UserService {
 		User persistance = userDAO.selectById(user.getId());
 		String check;
 		try {
-			String rawPassword = user.getPassword();
-			String encPassword = encoder.encode(rawPassword);
-			persistance.setPassword(encPassword);
+			if(persistance.getOauth().equals("myblog")) {
+				String rawPassword = user.getPassword();
+				String encPassword = encoder.encode(rawPassword);
+				persistance.setPassword(encPassword);
+			}
 			persistance.setEmail(user.getEmail());
 			check = userDAO.update(persistance);
 			return 1;
@@ -51,6 +55,11 @@ public class UserService {
 			System.out.println(e.getMessage());
 		}
 		return -1;
+	}
+	
+	public User selectByName(String username) throws FindException {
+		return userDAO.selectByUsername(username);
+		
 	}
 	
 //	public User login(User user) throws FindException {

@@ -8,6 +8,7 @@ public class UserBuilder {
 	private String password;
 	private String email;
 	private String role;
+	private String oauth;
 	private Timestamp createDate;
 	
 	public UserBuilder setId(int id) {
@@ -34,6 +35,11 @@ public class UserBuilder {
 		this.role = role;
 		return this;
 	}
+	
+	public UserBuilder setOauth(String oauth) {
+		this.oauth = oauth;
+		return this;
+	}
 
 	public UserBuilder setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
@@ -41,7 +47,7 @@ public class UserBuilder {
 	}
 
 	public User build() {
-		return new User(id, username, password, email, role, createDate);
+		return new User(id, username, password, email, role, oauth, createDate);
 	}
 
 }

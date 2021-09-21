@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.day.myblog.configuration.auth.PrincipalDetail;
 import com.day.myblog.exception.FindException;
 import com.day.myblog.service.BoardService;
+import com.day.myblog.service.ReplyService;
 import com.day.myblog.service.UserService;
 import com.day.myblog.utils.PagingVO;
 
@@ -22,6 +23,9 @@ public class BoardController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	@GetMapping({"","/"})
 	public String index(Model model, PagingVO vo, @RequestParam(value="nowPage", required=false)String nowPage
@@ -45,6 +49,8 @@ public class BoardController {
 	public String findById(@PathVariable int id, Model model) throws FindException {
 		model.addAttribute("user", userService.selectById(boardService.seeDetail(id).getUserid()));
 		model.addAttribute("board", boardService.seeDetail(id));
+		model.addAttribute("replys", boardService.selectAll(id));
+		model.addAttribute("reply", replyService.selectById(id));
 		return "board/detail";
 	}
 	

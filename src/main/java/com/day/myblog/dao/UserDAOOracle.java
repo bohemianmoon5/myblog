@@ -158,9 +158,6 @@ public class UserDAOOracle implements UserDAO{
 		try {
 			session = sessionFactory.openSession();
 			User user = session.selectOne("com.day.myblog.dto.UserMapper.selectByName", username);
-			if(user == null) {
-				throw new FindException("해당 유저는 없습니다. username : " + username);
-			}
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();

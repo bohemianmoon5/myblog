@@ -2,15 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.day.myblog.dto.UserMapper">
+<mapper namespace="com.day.myblog.dto.ReplyMapper">
 <!-- <insert id="insert" parameterType="hashmap"> -->
-<insert id="insert" parameterType="user">
+<select id="selectAll" resultType="reply">
+SELECT r.id, r.content, r.boardid, r.userid, r.createdate, u.username FROM myblogreply r JOIN mybloguser u ON(r.userid = u.id) WHERE r.boardid=#{boardid} ORDER BY id DESC
+</select>
+<insert id="insert" parameterType="reply">
+INSERT INTO myblogreply(id, content, boardid, userid, createdate)
+VALUES (myblogreply_seq.NEXTVAL, #{content}, #{boardid}, #{userid}, SYSDATE)
+</insert>
+<select id="selectById" parameterType="int" resultType="reply">
+SELECT r.id, r.content, r.boardid, r.userid, r.createdate, u.username FROM myblogreply r JOIN mybloguser u ON(r.userid = u.id) WHERE r.id=#{id}
+</select>
+<delete id="delete" parameterType="int">
+DELETE FROM myblogreply WHERE id=#{id}
+</delete>
+</mapper>
+
+<!-- <insert id="insert" parameterType="user">
 INSERT INTO mybloguser(id, username, password, email, role, oauth, createdate)
 VALUES (myblog_seq.NEXTVAL, #{username}, #{password}, #{email}, 'USER', #{oauth}, SYSDATE)
 </insert>
-<select id="selectById" parameterType="int" resultType="user">
-SELECT * FROM mybloguser WHERE id=#{id}
-</select>
 <select id="selectByName" parameterType="String" resultType="user">
 SELECT * FROM mybloguser WHERE username=#{username}
 </select>
@@ -36,8 +48,4 @@ UPDATE mybloguser
   <if test="email !=null and email != ''">email=#{email},</if>
 </set> 
 WHERE id=#{id}
-</update>
-<delete id="delete" parameterType="int">
-DELETE FROM mybloguser WHERE id=#{id}
-</delete>
-</mapper>
+</update> -->

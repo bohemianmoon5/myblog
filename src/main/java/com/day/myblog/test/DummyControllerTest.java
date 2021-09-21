@@ -77,5 +77,12 @@ public class DummyControllerTest {
 		List<Board> boards = boardDAO.selectAll(vo);
 		return boards;
 	}
+	
+	@GetMapping("/dummy/board/{id}")
+	public Board boardDetail(@PathVariable int id) throws FindException {
+		Board board = boardDAO.selectById(id);
+		return board;
+	}
+	
 
 }

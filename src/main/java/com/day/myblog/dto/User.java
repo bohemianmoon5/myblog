@@ -8,22 +8,25 @@ public class User {
 	private String password;
 	private String email;
 	private String role;
+	private String oauth;
 	private Timestamp createDate;
 	
 	public User() {
 		super();
 	}
 
-	public User(int id, String username, String password, String email, String role, Timestamp createDate) {
+	public User(int id, String username, String password, String email, String role, String oauth,
+			Timestamp createDate) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.role = role;
+		this.oauth = oauth;
 		this.createDate = createDate;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -63,6 +66,14 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public String getOauth() {
+		return oauth;
+	}
+
+	public void setOauth(String oauth) {
+		this.oauth = oauth;
+	}
 
 	public Timestamp getCreateDate() {
 		return createDate;
@@ -75,7 +86,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", role="
-				+ role + ", createDate=" + createDate + "]";
+				+ role + ", oauth=" + oauth + ", createDate=" + createDate + "]";
 	}
-	
+
 }

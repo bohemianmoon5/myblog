@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.day.myblog.configuration.auth.PrincipalDetail;
 import com.day.myblog.dto.Board;
+import com.day.myblog.dto.Reply;
 import com.day.myblog.dto.ResponseDto;
 import com.day.myblog.dto.User;
 import com.day.myblog.exception.AddException;
@@ -58,6 +59,31 @@ public class BoardApiController {
 	@PutMapping("/api/board/{id}")
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Board board) throws FindException, ModifyException {
 		int result = boardService.update(id, board);
+		if(result == 1) {
+			return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+		}else {
+			return new ResponseDto<Integer>(HttpStatus.INTERNAL_SERVER_ERROR.value(), result);
+		}
+	}
+	
+	@PostMapping("/api/board/{boardId}/reply")
+	public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply, @AuthenticationPrincipal PrincipalDetail principal) throws AddException, FindException {
+		try {
+			int result = boardService.replyWrite(principal.getUser(), boardId, reply);
+			if(result == 1) {
+				return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
+			}else {
+				return new ResponseDto<Integer>(HttpStatus.INTERNAL_SERVER_ERROR.value(), result);
+			}
+		} catch (AddException e) {
+			e.printStackTrace();
+			throw new AddException("댓글 등록 실패!!");
+		}
+	}
+	
+	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+	public ResponseDto<Integer> replyDelete(@PathVariable int replyId) throws RemoveException {
+		int result = boardService.deleteRely(replyId);
 		if(result == 1) {
 			return new ResponseDto<Integer>(HttpStatus.OK.value(), result);
 		}else {

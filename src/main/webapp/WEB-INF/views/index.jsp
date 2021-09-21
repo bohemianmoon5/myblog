@@ -34,8 +34,8 @@
 			<div class="row">
 				<c:forEach var="board" items="${boards}">
 					<div class="col-lg-4">
-						<div class="card bg-light"
-							style="height: 180px; margin: 10px 0px;">
+						<div class="card"
+							style="height: 180px; margin: 10px 0px; background-color: #e9e2da;">
 							<div class="card-body text-center">
 								<p class="card-text">${board.title}</p>
 								<br> <br> <a href="/board/${board.id}" class="btn btn-info">See

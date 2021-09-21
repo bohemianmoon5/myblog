@@ -8,10 +8,12 @@
     <setting name="jdbcTypeForNull" value="NULL" />
   </settings>
   <typeAliases>
+  	<typeAlias type="com.day.myblog.dto.Reply" alias="reply"/>
     <typeAlias type="com.day.myblog.dto.Board" alias="board"/>
     <typeAlias type="com.day.myblog.dto.User" alias="user"/>
   </typeAliases>
   <mappers>
+  	<mapper resource="mybatisConfig/ReplyMapper.xml"/>
   	<mapper resource="mybatisConfig/BoardMapper.xml"/>
   	<mapper resource="mybatisConfig/UserMapper.xml"/>
   </mappers>

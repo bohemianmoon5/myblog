@@ -32,7 +32,9 @@
 			</label>
 		</div>
 	</form>
+	<br>
 	<button id="btn-save" class="btn btn-primary">회원가입</button>
+	<button id="btn-back" class="btn btn-secondary" onclick="history.back()">돌아가기</button>
 </div>
 <script src="/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

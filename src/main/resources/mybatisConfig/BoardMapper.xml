@@ -15,7 +15,7 @@ SELECT * FROM myblogboard ORDER BY id ASC
 SELECT COUNT(*) FROM myblogboard 
 </select>
 <select id="selectById" parameterType="int" resultType="board">
-SELECT * FROM myblogboard WHERE id=#{id}
+SELECT b.id, b.title, b.content, b.count, b.userid, b.createdate, u.username FROM myblogboard b JOIN mybloguser u ON(b.userid = u.id) WHERE b.id=#{id}
 </select>
 <select id="selectPage" parameterType="java.util.HashMap" resultType="board">
 SELECT * 
