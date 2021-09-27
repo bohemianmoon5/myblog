@@ -1,5 +1,7 @@
 package com.day.myblog.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.day.myblog.configuration.auth.PrincipalDetail;
+import com.day.myblog.dto.Board;
 import com.day.myblog.exception.FindException;
+import com.day.myblog.exception.ModifyException;
 import com.day.myblog.service.BoardService;
 import com.day.myblog.service.ReplyService;
 import com.day.myblog.service.UserService;
@@ -46,7 +50,8 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/{id}")
-	public String findById(@PathVariable int id, Model model) throws FindException {
+	public String findById(@PathVariable int id, Model model) throws FindException, ModifyException {
+		boardService.updateCnt(id);
 		model.addAttribute("user", userService.selectById(boardService.seeDetail(id).getUserid()));
 		model.addAttribute("board", boardService.seeDetail(id));
 		model.addAttribute("replys", boardService.selectAll(id));
@@ -63,6 +68,11 @@ public class BoardController {
 	@GetMapping("/board/saveForm")
 	public String saveForm() {
 		return "board/saveForm";
+	}
+	
+	@GetMapping("/board/calendar")
+	public String calendar() {
+		return "board/calendar";
 	}
 
 }

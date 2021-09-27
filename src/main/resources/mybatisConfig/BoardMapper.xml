@@ -23,7 +23,7 @@ FROM (
     SELECT rownum rn, a.* 
     FROM (
      SELECT *
-     FROM myblogboard  
+     FROM myblogboard
      ORDER BY id DESC ) a
 )
 WHERE rn BETWEEN START_ROW(#{currentPage}, #{cnt_per_page}) AND  
@@ -39,6 +39,9 @@ UPDATE myblogboard
   <if test="content !=null and content != ''">content=#{content},</if>
 </set> 
 WHERE id=#{id}
+</update>
+<update id="updateCnt" parameterType="int">
+UPDATE myblogboard set count=count+1 WHERE id=#{id}
 </update>
 </mapper>
 

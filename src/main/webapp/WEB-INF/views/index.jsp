@@ -38,8 +38,8 @@
 							style="height: 180px; margin: 10px 0px; background-color: #e9e2da;">
 							<div class="card-body text-center">
 								<p class="card-text">${board.title}</p>
-								<br> <br> <a href="/board/${board.id}" class="btn btn-info">See
-									Detail</a>
+								<br> <br> <a href="/board/${board.id}"
+									class="btn btn-info">See Detail</a>
 							</div>
 						</div>
 					</div>
@@ -49,18 +49,22 @@
 			<ul class="pagination justify-content-center">
 				<c:choose>
 					<c:when test="${paging.nowPage == paging.startPage}">
-						<li class="page-item disabled"><a class="page-link" href="?nowPage=${paging.nowPage - 1}">Previous</a></li>
+						<li class="page-item disabled"><a class="page-link"
+							href="?nowPage=${paging.nowPage - 1}">Previous</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" href="?nowPage=${paging.nowPage - 1}">Previous</a></li>
+						<li class="page-item"><a class="page-link"
+							href="?nowPage=${paging.nowPage - 1}">Previous</a></li>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${paging.nowPage == paging.endPage}">
-						<li class="page-item disabled"><a class="page-link" href="?nowPage=${paging.nowPage + 1}">Next</a></li>
+						<li class="page-item disabled"><a class="page-link"
+							href="?nowPage=${paging.nowPage + 1}">Next</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" href="?nowPage=${paging.nowPage + 1}">Next</a></li>
+						<li class="page-item"><a class="page-link"
+							href="?nowPage=${paging.nowPage + 1}">Next</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

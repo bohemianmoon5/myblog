@@ -1,17 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<div class="container" style="margin: 170px 320px;">
+<div class="container" style="margin: 160px 320px;">
 	<p class="detail"
 		style="width: 100%; text-align: center; font: bolder; font-size: 20px;">상세보기</p>
 	<div style="display: flex; justify-content: center;">
 		<div class="card" style="width: 700px; height: auto;">
 			<div class="card" style="height: auto; background-color: #dfd5c8;">
 				<div class="card-body text-center">
-					<table class="board_view" style="margin-left: 30px; width: 650px;">
+					<table class="board_view" id="boardTable" style="margin-left: 30px; width: 590px;">
 						<colgroup>
-							<col width="10%">
+							<col width="18%">
 							<col width="30%">
-							<col width="15%">
+							<col width="18%">
 							<col width="*">
 						</colgroup>
 
@@ -26,12 +26,12 @@
 								<th>작성자</th>
 								<td>${user.username}</td>
 								<th>작성시간</th>
-								<td>${board.createDate}</td>
+								<td><fmt:formatDate value="${board.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 							</tr>
 							<tr>
 								<th>내용</th>
 								<td colspan="3">
-									<div style="margin-top: 15px; padding-left: 40px; text-align: left;">${board.content}</div>
+									<div style="margin-top: 13px; padding-left: 20px; text-align: left;">${board.content}</div>
 								</td>
 							</tr>
 						</tbody>

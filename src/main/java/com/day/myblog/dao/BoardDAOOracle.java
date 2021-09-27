@@ -129,11 +129,29 @@ public class BoardDAOOracle implements BoardDAO{
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ModifyException("수정에 실패하였습니다.");
+			throw new ModifyException("수정에 실패했습니다.");
 		}finally {
 			if(session != null) {
 				session.close();
 			}
 		}
 	}
+
+	@Override
+	public void updateCnt(int id) throws ModifyException {
+		SqlSession session = null;
+		try {
+			session = sessionFactory.openSession();
+			session.insert("com.day.myblog.dto.BoardMapper.updateCnt", id);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ModifyException("조회수 수정에 실패했습니다.");
+		}finally {
+			if(session != null) {
+				session.close();
+			}
+		}
+	}
+
 }

@@ -3,12 +3,12 @@
 <div class="container" style="margin: 100px 380px;">
 	<form>
 		<div class="form-group">
-			<label for="title">Title</label> <input type="text"
+			<label for="title" style="font-size: large;">Title</label> <input type="text"
 				class="form-control" placeholder="Enter title" id="title"
 				style="width: 600px;">
 		</div>
 		<div class="form-group">
-			<label for="content">Content</label>
+			<label for="content" style="font-size: large;">Content</label>
 			<textarea class="form-control summernote" rows="5" id="content"
 				style="width: 600px;"></textarea>
 		</div>

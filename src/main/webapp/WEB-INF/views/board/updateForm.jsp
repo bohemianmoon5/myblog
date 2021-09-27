@@ -4,12 +4,12 @@
 	<form>
 		<input type="hidden" id="id" value="${board.id}"/>
 		<div class="form-group">
-			<label for="title">Title</label> <input value="${board.title}" type="text"
+			<label for="title" style="font-size: large;">Title</label> <input value="${board.title}" type="text"
 				class="form-control" placeholder="Enter title" id="title"
 				style="width: 600px;">
 		</div>
 		<div class="form-group">
-			<label for="content">Content</label>
+			<label for="content" style="font-size: large;">Content</label>
 			<textarea class="form-control summernote" rows="5" id="content"
 				style="width: 600px;">${board.content}</textarea>
 		</div>

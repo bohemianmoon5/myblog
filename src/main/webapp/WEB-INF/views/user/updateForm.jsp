@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<div class="container" style="margin: 260px 570px;">
+<div class="container" style="margin: 240px 570px;">
 	<form class="was-validated">
 		<div class="form-group">
-			<label for="username">Username</label> <input type="text"
+			<label for="username" style="font-size: large;">Username</label> <input type="text"
 				class="form-control" value="${principal.user.username}" id="uname"
 				placeholder="Enter username" name="uname" required
 				style="width: 600px;" readonly>
@@ -12,7 +12,7 @@
 		</div>
 		<c:if test="${principal.user.oauth == null}">
 			<div class="form-group">
-				<label for="password">Password</label> <input type="password"
+				<label for="password" style="font-size: large;">Password</label> <input type="password"
 					class="form-control" id="pwd" placeholder="Enter password"
 					name="upwd" required style="width: 600px;">
 				<div class="valid-feedback">Valid.</div>
@@ -22,7 +22,7 @@
 		<c:choose>
 			<c:when test="${principal.user.oauth == null}">
 				<div class="form-group">
-					<label for="email">Email</label> <input type="text"
+					<label for="email" style="font-size: large;">Email</label> <input type="text"
 						class="form-control" value="${principal.user.email}" id="email"
 						placeholder="Enter email" name="uemail" required
 						style="width: 600px;">
@@ -32,7 +32,7 @@
 			</c:when>
 			<c:otherwise>
 				<div class="form-group">
-					<label for="email">Email</label> <input type="text"
+					<label for="email" style="font-size: large;">Email</label> <input type="text"
 						class="form-control" value="${principal.user.email}" id="email"
 						placeholder="Enter email" name="uemail" required
 						style="width: 600px;" readonly>

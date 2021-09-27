@@ -3,8 +3,6 @@ package com.day.myblog.dto;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class Board {
 	private int id;
 	private String title;
@@ -13,15 +11,17 @@ public class Board {
 	private int userid;
 	private String username;
 	private List<Reply> replys;
-	//@JsonFormat(pattern = "yy/MM/dd", timezone = "Asia/Seoul")
+	//@JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
 	private Timestamp createDate;
+	//검색
+	private String keyword;
 	
 	public Board() {
 		super();
 	}
 
 	public Board(int id, String title, String content, int count, int userid, String username, List<Reply> replys,
-			Timestamp createDate) {
+			Timestamp createDate, String keyword) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -31,6 +31,7 @@ public class Board {
 		this.username = username;
 		this.replys = replys;
 		this.createDate = createDate;
+		this.keyword = keyword;
 	}
 
 	public int getId() {
@@ -97,10 +98,19 @@ public class Board {
 		this.createDate = createDate;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	@Override
 	public String toString() {
 		return "Board [id=" + id + ", title=" + title + ", content=" + content + ", count=" + count + ", userid="
-				+ userid + ", username=" + username + ", replys=" + replys + ", createDate=" + createDate + "]";
+				+ userid + ", username=" + username + ", replys=" + replys + ", createDate=" + createDate + ", keyword="
+				+ keyword + "]";
 	}
 
 }

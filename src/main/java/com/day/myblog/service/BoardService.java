@@ -96,4 +96,9 @@ public class BoardService {
 			return -1;
 		}
 	}
+	
+	public void updateCnt(int id) throws ModifyException {
+		boardDAO.updateCnt(id);
+	}
+	
 }

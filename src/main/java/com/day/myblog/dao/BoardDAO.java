@@ -22,5 +22,7 @@ public interface BoardDAO {
 	String deleteById(int id) throws RemoveException;
 	
 	void update(Board board) throws ModifyException;
+	
+	void updateCnt(int id) throws ModifyException;
 
 }

@@ -12,6 +12,7 @@ public class BoardBuilder {
 	private String username;
 	private List<Reply> replys;
 	private Timestamp createDate;
+	private String keyword;
 	
 	public BoardBuilder setId(int id) {
 		this.id = id;
@@ -45,8 +46,12 @@ public class BoardBuilder {
 		this.createDate = createDate;
 		return this;
 	}
+	public BoardBuilder setKeyword(String keyword) {
+		this.keyword = keyword;
+		return this;
+	}
 	public Board build() {
-		return new Board(id, title, content, count, userid, username, replys, createDate);
+		return new Board(id, title, content, count, userid, username, replys, createDate, keyword);
 	}
 	
 }
