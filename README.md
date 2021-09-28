@@ -16,5 +16,5 @@
   - Database : Oracle 11g<br>
   - VCS : Git<br>
 
-- 시연영상
+- 시연영상<br>
 ![myblog(완료)](https://user-images.githubusercontent.com/65845572/135124559-e2df90ba-5c63-4261-971b-a6b295692571.gif)
