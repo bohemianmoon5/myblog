@@ -30,7 +30,7 @@ WHERE rn BETWEEN START_ROW(#{currentPage}, #{cnt_per_page}) AND
                  END_ROW(#{currentPage},   #{cnt_per_page})
 </select>
 <delete id="delete" parameterType="int">
-DELETE FROM myblogboard WHERE id=#{id}
+DELETE FROM myblogboard WHERE userid=#{id}
 </delete>
 <update id="update" parameterType="board">
 UPDATE myblogboard

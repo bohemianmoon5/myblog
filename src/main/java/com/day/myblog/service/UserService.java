@@ -42,7 +42,7 @@ public class UserService {
 		User persistance = userDAO.selectById(user.getId());
 		String check;
 		try {
-			if(persistance.getOauth().equals("myblog")) {
+			if(persistance.getOauth() == null) {
 				String rawPassword = user.getPassword();
 				String encPassword = encoder.encode(rawPassword);
 				persistance.setPassword(encPassword);

@@ -50,6 +50,7 @@ let index = {
 			url: "/api/board/"+id,
 			dataType: "json"
 		}).done(function(resp){
+			let obj = Object.values(resp);
 			alert("삭제 완료!!");
 			location.href="/";
 		}).fail(function(error){

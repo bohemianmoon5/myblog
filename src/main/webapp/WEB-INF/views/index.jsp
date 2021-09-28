@@ -69,7 +69,7 @@
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${paging.nowPage == paging.endPage}">
+					<c:when test="${paging.nowPage == paging.endPage || paging.total == 0}">
 						<li class="page-item disabled"><a class="page-link"
 							href="?nowPage=${paging.nowPage + 1}">Next</a></li>
 					</c:when>

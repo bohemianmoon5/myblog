@@ -58,8 +58,14 @@ let index = {
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
 		}).done(function(resp){
-			alert("수정 완료!!");
-			location.href="/";
+			let obj = Object.values(resp);
+			if(obj[0] == 500) {
+				alert("수정 실패!");
+			}else {
+				alert("수정 완료!!");
+				location.href="/";
+			}
+			console.log(resp);
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
