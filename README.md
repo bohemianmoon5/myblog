@@ -17,4 +17,4 @@
   - VCS : Git<br>
 
 - 시연영상<br><br>
-![myblog(완료)](https://user-images.githubusercontent.com/65845572/135124559-e2df90ba-5c63-4261-971b-a6b295692571.gif)
+![myblog(완료)](https://user-images.githubusercontent.com/65845572/135126543-11edf34e-4bee-45d0-91ea-61a244845d20.gif)
