@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		selectable: true,
 		selectMirror: true,
 		locale: 'ko',
-		googleCalendarApiKey: 'AIzaSyBvc_KCMdjhE_9kuiYlFMKMVCaOcXVe9A8',
+		googleCalendarApiKey: '',
 		events: {
-			googleCalendarId: 'fhmueh3t0g232dutnusc4c58g0@group.calendar.google.com',
+			googleCalendarId: '',
 			className: 'info',
 			color: '#3b6978', 
 			//textColor: 'black'
