@@ -52,7 +52,8 @@ public class BoardDAOOracle implements BoardDAO{
 			map.put("currentPage", vo.getNowPage());
 			List<Board> list = session.selectList("com.day.myblog.dto.BoardMapper.selectPage", map);
 			if(list.size() == 0) {
-				throw new FindException("해당 정보가 없습니다.");
+				//throw new FindException("해당 정보가 없습니다.");
+				System.out.println("해당 정보가 없습니다.");
 			}
 			return list;
 		} catch (Exception e) {
